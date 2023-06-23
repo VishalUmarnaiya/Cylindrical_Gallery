@@ -1,0 +1,30 @@
+* { margin: 0; padding: 0; box-sizing: border-box;}
+:root {
+    --i : 1
+}
+body { background-color: black;}
+
+.cube-container { margin: 100px auto; width: 70%; height: 600px; background-color: black; }
+.cube { height: 100%; width: 100%; background-color: transparent; position: relative; display: flex; transform-style: preserve-3d; perspective: 20000px;}
+.cube {animation: circular 30s infinite alternate, rotate 50s infinite alternate;}
+.card {  display: flex; justify-content: center; align-items: center; font-size: 52px; font-weight: bolder; aspect-ratio: 430 / 600; width: 430px;  position: absolute; top: 50%; left: 50%; background-repeat: no-repeat; background-position: center center; background-size: cover; }
+.card { transform-style: preserve-3d; transform: translate(-50%, -50%) rotateY(calc(var(--i)*(-60deg)))  translateZ(500px) translateY(calc(var(--i)*140px)); background-color: rgb(255, 102, 0); backface-visibility:initial; transition-duration: 1s; }
+.card img {  height: 100%; width: 100%; position: absolute; top: 0; left: 0; max-height: 100%; object-fit: cover;}
+.card:hover { transform: translate(-50%, -50%) rotateY(calc(var(--i)*(-60deg)))  translateZ(500px) translateY(calc(var(--i)*140px)) scale(1.1); cursor: pointer;}
+.card:hover::before { background: linear-gradient(235deg, #6200ffd4, #060c21, #d40039);}
+.card:hover::after { background: linear-gradient(235deg, #6200ffd4, #060c21, #d40039); filter: blur(20px)}
+.card::before{ content: ''; position: absolute; top: -2px; bottom: -2px; left: -2px; right: -2px; background: #fff; z-index: -1;}
+.card::after{ content: ''; position: absolute; top: -2px; bottom: -2px; left: -2px; right: -2px; background: #fff; z-index: -1; filter: blur(20px);}
+.card::before, .card::after{ background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4); transition-duration:  2s;}
+.block { width: 100%; height: 1000px;}
+
+
+@keyframes circular {
+    from { transform:  translateY(0) rotateY(0);}
+    to { transform:  translateY(-3300px) rotateY(360deg);}
+}
+
+
+
+
+
